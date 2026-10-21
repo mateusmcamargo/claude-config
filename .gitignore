@@ -1,0 +1,8 @@
+.credentials.json
+history.jsonl
+settings.json
+settings.json.bak*
+sessions/
+projects/
+session-env/
+*.bak-*
