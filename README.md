@@ -9,7 +9,7 @@ Pré-requisitos: Claude Code e `git` instalados (ver [docs/new-machine.md](docs/
 **Windows (PowerShell):**
 
 ```powershell
-irm https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/scripts/setup.ps1 | iex
+iex ((irm https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/scripts/setup.ps1).TrimStart([char]0xFEFF))
 ```
 
 **Linux e macOS:**
@@ -32,7 +32,7 @@ cd claude-config
 Para listar as ações sem executá-las, use o parâmetro de simulação:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/scripts/setup.ps1))) -DryRun
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/scripts/setup.ps1).TrimStart([char]0xFEFF))) -DryRun
 ```
 
 ```bash
@@ -45,6 +45,8 @@ curl -fsSL https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/s
 |---|---|---|
 | Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest` e modo de permissão `plan` |
 | Barra de status | `~/.claude/statusline.ps1` ou `statusline.sh` | Três linhas: contexto, repositório e ramo, uso semanal, modelo, tokens e tempo de sessão |
+
+O comando do Windows remove o caractere de marcação de ordem de bytes (BOM) do script, necessário para que o PowerShell 5.1 leia corretamente os acentos.
 
 O script de instalação mescla as configurações ao `settings.json` existente: as chaves do repositório prevalecem e as demais são preservadas. Antes de qualquer alteração, é criada uma cópia de segurança. A execução repetida é segura.
 
