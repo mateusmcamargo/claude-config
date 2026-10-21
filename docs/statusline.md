@@ -15,9 +15,9 @@ A barra de status exibe três linhas e é executada pelo Claude Code a cada atua
 |---|---|
 | 1 | Barra de uso do contexto, nome do repositório e ramo atual |
 | 2 | Barra de uso semanal, tempo até o reinício do limite e último arquivo manipulado |
-| 3 | Modelo, última ação, linhas adicionadas e removidas, total de tokens, cache de prompt (taxa de acerto, tokens lidos do cache e tokens gravados) e duração da sessão |
+| 3 | Modelo, última ação, linhas adicionadas e removidas, total de tokens, taxa de acerto do cache de prompt e duração da sessão |
 
-A taxa de acerto do cache é a razão entre os tokens lidos do cache e o total de tokens de entrada da última chamada à API (lidos, gravados e não armazenados). Verde indica 80% ou mais, amarelo de 50% a 79% e vermelho abaixo de 50%. O item é omitido enquanto não houver chamada registrada.
+A taxa de acerto do cache é a razão entre os tokens lidos do cache e o total de tokens de entrada da última chamada à API (lidos, gravados e não armazenados). Verde indica 90% ou mais, amarelo de 70% a 89% e vermelho abaixo de 70%. O item é omitido enquanto não houver chamada registrada.
 
 A segunda linha depende dos dados de limite de uso (`rate_limits`), disponíveis apenas em alguns planos. Na ausência desses dados, são exibidos somente o arquivo atual ou nenhum item.
 

@@ -142,12 +142,10 @@ if ($cu) {
     $ctotal = $cread + $cwrite + [double](Get-Or $cu.input_tokens 0)
     if ($ctotal -gt 0) {
         $hit = [int][math]::Floor($cread * 100 / $ctotal)
-        if     ($hit -ge 80) { $cc = $green }
-        elseif ($hit -ge 50) { $cc = $yellow }
+        if     ($hit -ge 90) { $cc = $green }
+        elseif ($hit -ge 70) { $cc = $yellow }
         else                 { $cc = $red }
-        $cr = (Format-Tokens $cread) -replace ",", "."
-        $cw = (Format-Tokens $cwrite) -replace ",", "."
-        $parts3 += "cache $cc$hit%$reset $cr read, $cw new"
+        $parts3 += "cache $cc$hit%$reset"
     }
 }
 $parts3 += ([string][char]0x23F1) + " $dur"
