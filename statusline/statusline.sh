@@ -2,7 +2,7 @@
 # Barra de status do Claude Code para Linux e macOS. Requer jq e git.
 # Linha 1: barra de contexto, repositório (ramo).
 # Linha 2: uso semanal, tempo até o reinício, arquivo atual.
-# Linha 3: modelo, última ação, linhas adicionadas/removidas, tokens, tempo de sessão.
+# Linha 3: modelo, última ação, linhas adicionadas/removidas, tokens, cache de prompt, tempo de sessão.
 
 input="$(cat)"
 j() { echo "$input" | jq -r "$1 // empty" 2>/dev/null; }
@@ -100,6 +100,18 @@ parts3=("${magenta}${model}${reset}")
 [ -n "$action" ] && parts3+=("⚡ $action")
 parts3+=("${green}+${added}${reset} ${red}-${removed}${reset}")
 parts3+=("${cyan}${tokens} tok${reset}")
+# Cache de prompt da última chamada à API (current_usage é nulo antes da primeira)
+cread="$(j '.context_window.current_usage.cache_read_input_tokens')"; cread="${cread:-0}"
+cwrite="$(j '.context_window.current_usage.cache_creation_input_tokens')"; cwrite="${cwrite:-0}"
+cnew="$(j '.context_window.current_usage.input_tokens')"; cnew="${cnew:-0}"
+ctotal=$(( cread + cwrite + cnew ))
+if [ "$ctotal" -gt 0 ]; then
+  hit=$(( cread * 100 / ctotal ))
+  if [ "$hit" -ge 80 ]; then cc="$green"; elif [ "$hit" -ge 50 ]; then cc="$yellow"; else cc="$red"; fi
+  fmt() { if [ "$1" -ge 1000000 ]; then awk -v n="$1" 'BEGIN{printf "%.1fM", n/1000000}'
+          elif [ "$1" -ge 1000 ]; then awk -v n="$1" 'BEGIN{printf "%.1fk", n/1000}'; else echo "$1"; fi; }
+  parts3+=("cache ${cc}${hit}%${reset} $(fmt "$cread") read, $(fmt "$cwrite") new")
+fi
 parts3+=("⏱ $dur")
 
 echo "$line1"

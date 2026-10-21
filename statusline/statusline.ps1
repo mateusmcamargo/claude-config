@@ -1,7 +1,7 @@
 ﻿# Claude Code status line for Windows (PowerShell).
 # Line 1: context bar, repo (branch).
 # Line 2: weekly usage bar, time until reset, current file.
-# Line 3: model, last action, lines added/removed, tokens, session time.
+# Line 3: model, last action, lines added/removed, tokens, prompt cache, session time.
 # No jq needed. Requires git in PATH.
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -134,6 +134,22 @@ $parts3 = @("$magenta$model$reset")
 if ($action) { $parts3 += ([string][char]0x26A1) + " $action" }
 $parts3 += "$green+$added$reset $red-$removed$reset"
 $parts3 += "$cyan$tokens tok$reset"
+# Prompt cache of the last API call (current_usage is null before the first call)
+$cu = $d.context_window.current_usage
+if ($cu) {
+    $cread  = [double](Get-Or $cu.cache_read_input_tokens 0)
+    $cwrite = [double](Get-Or $cu.cache_creation_input_tokens 0)
+    $ctotal = $cread + $cwrite + [double](Get-Or $cu.input_tokens 0)
+    if ($ctotal -gt 0) {
+        $hit = [int][math]::Floor($cread * 100 / $ctotal)
+        if     ($hit -ge 80) { $cc = $green }
+        elseif ($hit -ge 50) { $cc = $yellow }
+        else                 { $cc = $red }
+        $cr = (Format-Tokens $cread) -replace ",", "."
+        $cw = (Format-Tokens $cwrite) -replace ",", "."
+        $parts3 += "cache $cc$hit%$reset $cr read, $cw new"
+    }
+}
 $parts3 += ([string][char]0x23F1) + " $dur"
 $line3 = $parts3 -join $sep
 
