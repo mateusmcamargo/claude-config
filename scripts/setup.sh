@@ -62,5 +62,19 @@ if [ "$DRY_RUN" = 1 ]; then
   echo "$MERGED"
 else
   echo "$MERGED" > "$SETTINGS"
-  info 'Concluído. Execute "claude" para autenticar, se necessário.'
 fi
+
+# Servidores MCP (registrados em ~/.claude.json pelo comando 'claude mcp', não por settings.json)
+for NAME in $(jq -r 'keys[]' "$ROOT/settings/mcp.json"); do
+  if ! command -v claude >/dev/null 2>&1; then
+    echo "Aviso: servidor MCP '$NAME' não registrado: comando 'claude' ausente." >&2
+    continue
+  fi
+  BIN="$(jq -r --arg n "$NAME" '.[$n].command' "$ROOT/settings/mcp.json")"
+  command -v "$BIN" >/dev/null 2>&1 || echo "Aviso: o servidor MCP '$NAME' requer '$BIN' no PATH. Consulte docs/new-machine.md." >&2
+  if claude mcp get "$NAME" >/dev/null 2>&1; then info "Servidor MCP '$NAME' já registrado"; continue; fi
+  plan "Registrando servidor MCP '$NAME'"
+  [ "$DRY_RUN" = 1 ] || claude mcp add-json --scope user "$NAME" "$(jq -c --arg n "$NAME" '.[$n]' "$ROOT/settings/mcp.json")" >/dev/null
+done
+
+[ "$DRY_RUN" = 1 ] || info 'Concluído. Execute "claude" para autenticar, se necessário.'

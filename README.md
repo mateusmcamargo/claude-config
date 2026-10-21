@@ -45,6 +45,7 @@ curl -fsSL https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/s
 |---|---|---|
 | Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest` e modo de permissão `plan` |
 | Barra de status | `~/.claude/statusline.ps1` ou `statusline.sh` | Três linhas: contexto, repositório e ramo, uso semanal, modelo, tokens e tempo de sessão |
+| Servidor MCP | `~/.claude.json` (escopo de usuário) | Playwright (`@playwright/mcp`), para o Claude Code controlar um navegador e testar aplicações. Requer Node.js |
 
 O comando do Windows remove o caractere de marcação de ordem de bytes (BOM) do script, necessário para que o PowerShell 5.1 leia corretamente os acentos.
 
@@ -53,7 +54,7 @@ O script de instalação mescla as configurações ao `settings.json` existente:
 ## Estrutura
 
 ```
-settings/    configurações base em JSON
+settings/    configurações base e servidores MCP em JSON
 statusline/  barra de status para Windows e Linux/macOS
 scripts/     setup, sync-from-local e doctor
 docs/        documentação e solução de problemas

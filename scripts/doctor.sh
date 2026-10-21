@@ -24,5 +24,10 @@ if [ "$v" = 0 ]; then
 fi
 check "$([ -f "$CLAUDE_HOME/statusline.sh" ]; echo $?)" 'statusline.sh instalado' 'Execute scripts/setup.sh.'
 
+if command -v claude >/dev/null 2>&1; then
+  check "$(claude mcp get playwright >/dev/null 2>&1; echo $?)" 'servidor MCP playwright registrado' 'Execute scripts/setup.sh.'
+fi
+check "$(has npx)" 'npx instalado (Node.js)' 'Instale o Node.js; o servidor MCP playwright o utiliza.'
+
 if [ "$falhas" -gt 0 ]; then echo "$falhas item(ns) pendente(s)."; exit 1; fi
 echo 'Configuração aplicada.'

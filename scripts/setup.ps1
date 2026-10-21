@@ -72,5 +72,25 @@ if ($DryRun) {
     Write-Host ($current | ConvertTo-Json -Depth 10)
 } else {
     [IO.File]::WriteAllText($settingsPath, ($current | ConvertTo-Json -Depth 10), $utf8)
-    Info 'Concluído. Execute "claude" para autenticar, se necessário.'
 }
+
+# Servidores MCP (registrados em ~/.claude.json pelo comando 'claude mcp', não por settings.json)
+$mcp = Get-Content (Join-Path $root 'settings\mcp.json') -Raw | ConvertFrom-Json
+foreach ($s in $mcp.PSObject.Properties) {
+    if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+        Write-Warning "Servidor MCP '$($s.Name)' não registrado: comando 'claude' ausente."
+        continue
+    }
+    if (-not (Get-Command $s.Value.command -ErrorAction SilentlyContinue)) {
+        Write-Warning "O servidor MCP '$($s.Name)' requer '$($s.Value.command)' no PATH. Consulte docs/new-machine.md."
+    }
+    cmd /c "claude mcp get $($s.Name) >nul 2>&1"
+    if ($LASTEXITCODE -eq 0) { Info "Servidor MCP '$($s.Name)' já registrado"; continue }
+    Plan "Registrando servidor MCP '$($s.Name)'"
+    if (-not $DryRun) {
+        $json = $s.Value | ConvertTo-Json -Compress
+        claude mcp add-json --scope user $s.Name ($json -replace '"', '\"') | Out-Null
+    }
+}
+
+if (-not $DryRun) { Info 'Concluído. Execute "claude" para autenticar, se necessário.' }

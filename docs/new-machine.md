@@ -8,6 +8,7 @@ Este documento descreve a sequência recomendada para configurar o Claude Code e
 |---|---|---|
 | Git | Git for Windows (inclui o Git Bash) | Gerenciador de pacotes (`apt`, `brew`) |
 | Claude Code | Instalador oficial, conforme a documentação do produto | Instalador oficial, conforme a documentação do produto |
+| Node.js (inclui o `npx`) | Instalador oficial ou `winget install OpenJS.NodeJS.LTS` | Gerenciador de pacotes (`apt`, `brew`) |
 | jq | Não necessário | `sudo apt install jq` ou `brew install jq` |
 | GitHub CLI (opcional) | `winget install GitHub.cli` | `apt` ou `brew` |
 

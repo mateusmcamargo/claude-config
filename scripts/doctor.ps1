@@ -23,5 +23,11 @@ if ($cfg) {
 }
 Check (Test-Path (Join-Path $ClaudeHome 'statusline.ps1')) 'statusline.ps1 instalado' 'Execute scripts\setup.ps1.'
 
+if (Get-Command claude -ErrorAction SilentlyContinue) {
+    claude mcp get playwright *> $null
+    Check ($LASTEXITCODE -eq 0) 'servidor MCP playwright registrado' 'Execute scripts\setup.ps1.'
+}
+Check ([bool](Get-Command npx -ErrorAction SilentlyContinue)) 'npx instalado (Node.js)' 'Instale o Node.js; o servidor MCP playwright o utiliza.'
+
 if ($falhas -gt 0) { Write-Host "$falhas item(ns) pendente(s)."; exit 1 }
 Write-Host 'Configuração aplicada.'

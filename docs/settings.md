@@ -18,6 +18,16 @@ As configurações base estão em `settings/settings.base.json` e são mescladas
 3. Objetos aninhados, como `permissions`, são mesclados campo a campo, preservando regras como `allow` e `deny` já existentes.
 4. A chave `statusLine` é sempre regenerada.
 
+## Servidores MCP
+
+Os servidores MCP são definidos em `settings/mcp.json` e não em `settings.base.json`, pois o Claude Code os guarda em `~/.claude.json`, e não em `settings.json`. O script de instalação registra cada servidor com `claude mcp add-json --scope user`, apenas quando ainda não estiver registrado, de modo que a execução repetida não gera duplicidade. No modo de simulação, a ação é somente listada.
+
+| Servidor | Comando | Finalidade |
+|---|---|---|
+| `playwright` | `npx @playwright/mcp@latest` | Controle de navegador para testar aplicações web. Requer Node.js |
+
+Para adicionar outro servidor, incluir uma entrada em `settings/mcp.json` com os campos `command` e `args`. O `scripts/doctor` verifica o registro do servidor `playwright`.
+
 ## Como adicionar uma nova configuração
 
 1. Alterar a configuração no Claude Code (por exemplo, pelo comando `/config`).
