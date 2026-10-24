@@ -43,7 +43,7 @@ curl -fsSL https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/s
 
 | Item | Destino | Descrição |
 |---|---|---|
-| Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest` e modo de permissão `plan` |
+| Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest`, modo de permissão `plan` e modelo `opus` |
 | Barra de status | `~/.claude/statusline.ps1` ou `statusline.sh` | Três linhas: contexto, repositório e ramo, uso semanal, modelo, tokens e tempo de sessão |
 | Servidor MCP | `~/.claude.json` (escopo de usuário) | Playwright (`@playwright/mcp`), para o Claude Code controlar um navegador e testar aplicações. Requer Node.js |
 

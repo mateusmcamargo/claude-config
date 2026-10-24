@@ -9,6 +9,7 @@ As configurações base estão em `settings/settings.base.json` e são mescladas
 | `autoUpdatesChannel` | `latest` | O Claude Code recebe as versões mais recentes assim que publicadas |
 | `theme` | `dark-ansi` | Tema escuro com cores ANSI do terminal |
 | `permissions.defaultMode` | `plan` | Cada sessão inicia em modo de planejamento, sem executar alterações até a aprovação do plano |
+| `model` | `opus` | Cada sessão inicia com o modelo Opus |
 | `statusLine` | gerada | Comando da barra de status, gerado pelo setup com o caminho da máquina atual |
 
 ## Regras de mesclagem
@@ -31,6 +32,6 @@ Para adicionar outro servidor, incluir uma entrada em `settings/mcp.json` com os
 ## Como adicionar uma nova configuração
 
 1. Alterar a configuração no Claude Code (por exemplo, pelo comando `/config`).
-2. Executar `scripts/sync-from-local`. Apenas as chaves `autoUpdatesChannel`, `theme` e `permissions` são copiadas.
+2. Executar `scripts/sync-from-local`. Apenas as chaves `autoUpdatesChannel`, `theme`, `permissions` e `model` são copiadas.
 3. Para gerenciar outra chave, editar `settings/settings.base.json` manualmente e ajustar a lista de chaves nos scripts `sync-from-local`.
 4. Registrar a alteração em um commit.

@@ -11,8 +11,8 @@ if [ -f "$CLAUDE_HOME/statusline.sh" ]; then
 fi
 
 if [ -f "$CLAUDE_HOME/settings.json" ]; then
-  jq '{autoUpdatesChannel, theme, permissions} | with_entries(select(.value != null))' \
+  jq '{autoUpdatesChannel, theme, permissions, model} | with_entries(select(.value != null))' \
     "$CLAUDE_HOME/settings.json" > "$ROOT/settings/settings.base.json"
-  echo "[sync] settings.base.json atualizado (chaves: autoUpdatesChannel, theme, permissions)"
+  echo "[sync] settings.base.json atualizado (chaves: autoUpdatesChannel, theme, permissions, model)"
 fi
 echo '[sync] Revise o resultado com "git diff" antes de registrar o commit.'

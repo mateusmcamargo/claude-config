@@ -15,10 +15,10 @@ $settings = Join-Path $ClaudeHome 'settings.json'
 if (Test-Path $settings) {
     $cur = Get-Content $settings -Raw | ConvertFrom-Json
     $out = [ordered]@{}
-    foreach ($k in 'autoUpdatesChannel', 'theme', 'permissions') {
+    foreach ($k in 'autoUpdatesChannel', 'theme', 'permissions', 'model') {
         if ($cur.PSObject.Properties[$k]) { $out[$k] = $cur.$k }
     }
     [IO.File]::WriteAllText((Join-Path $root 'settings\settings.base.json'), (($out | ConvertTo-Json -Depth 10) + "`n"), $utf8)
-    Write-Host '[sync] settings.base.json atualizado (chaves: autoUpdatesChannel, theme, permissions)'
+    Write-Host '[sync] settings.base.json atualizado (chaves: autoUpdatesChannel, theme, permissions, model)'
 }
 Write-Host '[sync] Revise o resultado com "git diff" antes de registrar o commit.'

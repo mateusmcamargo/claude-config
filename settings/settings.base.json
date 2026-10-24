@@ -3,5 +3,6 @@
   "theme": "dark-ansi",
   "permissions": {
     "defaultMode": "plan"
-  }
+  },
+  "model": "opus"
 }
