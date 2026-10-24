@@ -25,7 +25,11 @@ Os servidores MCP são definidos em `settings/mcp.json` e não em `settings.base
 
 | Servidor | Comando | Finalidade |
 |---|---|---|
-| `playwright` | `npx @playwright/mcp@latest` | Controle de navegador para testar aplicações web. Requer Node.js |
+| `playwright` | `npx @playwright/mcp@latest --browser chromium` | Controle de navegador para testar aplicações web. Requer Node.js |
+
+O parâmetro `--browser chromium` faz o servidor utilizar o Chrome for Testing, distribuído pelo próprio Playwright, em vez do Google Chrome instalado no sistema. Dessa forma, o navegador não depende de instalação com privilégios de administrador e funciona em distribuições Linux sem pacote oficial do Google Chrome. O navegador é instalado uma única vez por máquina, conforme descrito em [new-machine.md](new-machine.md).
+
+Como o script de instalação não altera servidores já registrados, uma máquina com o registro anterior deve removê-lo com `claude mcp remove playwright -s user` e executar o setup novamente.
 
 Para adicionar outro servidor, incluir uma entrada em `settings/mcp.json` com os campos `command` e `args`. O `scripts/doctor` verifica o registro do servidor `playwright`.
 

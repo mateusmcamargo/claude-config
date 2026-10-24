@@ -45,7 +45,7 @@ curl -fsSL https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/s
 |---|---|---|
 | Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest`, modo de permissão `plan` e modelo `opus` |
 | Barra de status | `~/.claude/statusline.ps1` ou `statusline.sh` | Três linhas: contexto, repositório e ramo, uso semanal, modelo, tokens e tempo de sessão |
-| Servidor MCP | `~/.claude.json` (escopo de usuário) | Playwright (`@playwright/mcp`), para o Claude Code controlar um navegador e testar aplicações. Requer Node.js |
+| Servidor MCP | `~/.claude.json` (escopo de usuário) | Playwright (`@playwright/mcp`) com o navegador Chromium, para o Claude Code controlar um navegador e testar aplicações. Requer Node.js e a instalação do navegador (ver [docs/new-machine.md](docs/new-machine.md)) |
 
 O comando do Windows remove o caractere de marcação de ordem de bytes (BOM) do script, necessário para que o PowerShell 5.1 leia corretamente os acentos.
 
