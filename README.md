@@ -45,6 +45,7 @@ curl -fsSL https://raw.githubusercontent.com/mateusmcamargo/claude-config/main/s
 |---|---|---|
 | Configurações | `~/.claude/settings.json` | Tema `dark-ansi`, canal de atualização `latest`, modo de permissão `plan` e modelo `opus` |
 | Barra de status | `~/.claude/statusline.ps1` ou `statusline.sh` | Três linhas: contexto, repositório e ramo, uso semanal, modelo, tokens e tempo de sessão |
+| Instruções globais | `~/.claude/CLAUDE.md` e `~/.claude/keybindings.md` | Preferências de código (comentários em inglês, indentação de 4 espaços) e lista dos atalhos em uso (ver [docs/instructions.md](docs/instructions.md)) |
 | Servidor MCP | `~/.claude.json` (escopo de usuário) | Playwright (`@playwright/mcp`) com o navegador Chromium, para o Claude Code controlar um navegador e testar aplicações. Requer Node.js e a instalação do navegador (ver [docs/new-machine.md](docs/new-machine.md)) |
 
 O comando do Windows remove o caractere de marcação de ordem de bytes (BOM) do script, necessário para que o PowerShell 5.1 leia corretamente os acentos.
@@ -54,10 +55,11 @@ O script de instalação mescla as configurações ao `settings.json` existente:
 ## Estrutura
 
 ```
-settings/    configurações base e servidores MCP em JSON
-statusline/  barra de status para Windows e Linux/macOS
-scripts/     setup, sync-from-local e doctor
-docs/        documentação e solução de problemas
+settings/      configurações base e servidores MCP em JSON
+instructions/  instruções globais (CLAUDE.md) e atalhos em uso
+statusline/    barra de status para Windows e Linux/macOS
+scripts/       setup, sync-from-local e doctor
+docs/          documentação e solução de problemas
 ```
 
 ## Scripts
@@ -81,4 +83,5 @@ Credenciais (`.credentials.json`), histórico, sessões e projetos nunca são ve
 - [Preparação de máquina nova](docs/new-machine.md)
 - [Configurações](docs/settings.md)
 - [Barra de status](docs/statusline.md)
+- [Instruções globais](docs/instructions.md)
 - [Solução de problemas](docs/troubleshooting.md)

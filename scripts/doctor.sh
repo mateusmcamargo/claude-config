@@ -23,6 +23,7 @@ if [ "$v" = 0 ]; then
   check "$([ "$(jq -r '.statusLine.command // empty' "$S")" != '' ]; echo $?)" 'statusLine configurado' 'Execute scripts/setup.sh.'
 fi
 check "$([ -f "$CLAUDE_HOME/statusline.sh" ]; echo $?)" 'statusline.sh instalado' 'Execute scripts/setup.sh.'
+check "$([ -f "$CLAUDE_HOME/CLAUDE.md" ]; echo $?)" 'instruções globais (CLAUDE.md) instaladas' 'Execute scripts/setup.sh.'
 
 if command -v claude >/dev/null 2>&1; then
   check "$(claude mcp get playwright >/dev/null 2>&1; echo $?)" 'servidor MCP playwright registrado' 'Execute scripts/setup.sh.'

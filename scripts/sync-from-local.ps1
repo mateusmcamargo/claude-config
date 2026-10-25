@@ -11,6 +11,15 @@ if (Test-Path $src) {
     Write-Host '[sync] statusline.ps1 copiado'
 }
 
+# Global instructions: only the files this repository already tracks
+foreach ($dst in Get-ChildItem (Join-Path $root 'instructions') -Filter '*.md') {
+    $src = Join-Path $ClaudeHome $dst.Name
+    if (Test-Path $src) {
+        Copy-Item $src $dst.FullName -Force
+        Write-Host "[sync] $($dst.Name) copiado"
+    }
+}
+
 $settings = Join-Path $ClaudeHome 'settings.json'
 if (Test-Path $settings) {
     $cur = Get-Content $settings -Raw | ConvertFrom-Json

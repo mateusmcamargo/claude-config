@@ -22,6 +22,7 @@ if ($cfg) {
     Check ($null -ne $cfg.statusLine) 'statusLine configurado' 'Execute scripts\setup.ps1.'
 }
 Check (Test-Path (Join-Path $ClaudeHome 'statusline.ps1')) 'statusline.ps1 instalado' 'Execute scripts\setup.ps1.'
+Check (Test-Path (Join-Path $ClaudeHome 'CLAUDE.md')) 'instruções globais (CLAUDE.md) instaladas' 'Execute scripts\setup.ps1.'
 
 if (Get-Command claude -ErrorAction SilentlyContinue) {
     claude mcp get playwright *> $null

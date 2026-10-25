@@ -13,6 +13,7 @@ Repositório com a configuração pessoal do Claude Code de Mateus, restaurada e
 - `setup.ps1` deve funcionar no Windows PowerShell 5.1 (sem `&&`, sem `??`) e gravar JSON em UTF-8 sem BOM
 - `statusline.ps1` e `statusline.sh` devem manter o mesmo layout de três linhas
 - Toda mudança de comportamento atualiza o `README.md` e o documento correspondente em `docs/`
+- `instructions/` contém as instruções globais instaladas em `~/.claude/`. Ao mudar um atalho em qualquer máquina, atualizar `instructions/keybindings.md`
 
 ## Documentação
 

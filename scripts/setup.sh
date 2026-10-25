@@ -53,6 +53,19 @@ if [ "$DRY_RUN" != 1 ]; then
   chmod +x "$STATUS_DST"
 fi
 
+# Global instructions (CLAUDE.md and the files it imports, such as keybindings.md)
+STAMP="$(date +%Y%m%d-%H%M%S)"
+for SRC in "$ROOT"/instructions/*.md; do
+  DST="$CLAUDE_HOME/$(basename "$SRC")"
+  if [ -f "$DST" ] && cmp -s "$SRC" "$DST"; then continue; fi
+  if [ -f "$DST" ]; then
+    plan "Cópia de segurança: $DST.bak-$STAMP"
+    [ "$DRY_RUN" = 1 ] || cp "$DST" "$DST.bak-$STAMP"
+  fi
+  plan "Copiando instruções para $DST"
+  [ "$DRY_RUN" = 1 ] || cp "$SRC" "$DST"
+done
+
 MERGED="$(jq -n --argjson cur "$CURRENT" --slurpfile base "$ROOT/settings/settings.base.json" \
   --arg cmd "bash \"$STATUS_DST\"" \
   '$cur * $base[0] * {statusLine: {type: "command", command: $cmd}}')"

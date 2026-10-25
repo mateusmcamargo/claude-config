@@ -48,6 +48,19 @@ $statusDst = Join-Path $ClaudeHome 'statusline.ps1'
 
 if (-not (Test-Path $ClaudeHome)) { Plan "Criando $ClaudeHome"; if (-not $DryRun) { New-Item -ItemType Directory -Path $ClaudeHome | Out-Null } }
 
+# Global instructions (CLAUDE.md and the files it imports, such as keybindings.md)
+$stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
+foreach ($src in Get-ChildItem (Join-Path $root 'instructions') -Filter '*.md') {
+    $dst = Join-Path $ClaudeHome $src.Name
+    if ((Test-Path $dst) -and ((Get-FileHash $dst).Hash -eq (Get-FileHash $src.FullName).Hash)) { continue }
+    if (Test-Path $dst) {
+        Plan "Cópia de segurança: $dst.bak-$stamp"
+        if (-not $DryRun) { Copy-Item $dst "$dst.bak-$stamp" }
+    }
+    Plan "Copiando instruções para $dst"
+    if (-not $DryRun) { Copy-Item $src.FullName $dst -Force }
+}
+
 # Estado atual das configurações
 $current = New-Object psobject
 if (Test-Path $settingsPath) {
