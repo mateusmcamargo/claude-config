@@ -70,7 +70,9 @@ Logo após minimizar com `SUPER+baixo`, `SUPER+cima` restaura a janela, desde qu
 | Ação | Efeito |
 |---|---|
 | Rolagem sobre o ícone de brilho ou volume | Ajusta o valor e mostra o aviso na tela |
-| Clique no ícone de volume | Silencia |
+| Clique no ícone de volume | Silencia; clique direito abre os sliders de volume (pavucontrol, de novo fecha) |
+| Clique no ícone de rede | Menu do Wi-Fi: redes com sinal, conectar (pede senha se preciso), desconectar, ligar/desligar |
+| Clique no ícone de Bluetooth | Abre o blueman (de novo fecha); clique direito liga/desliga o Bluetooth |
 | Clique no nome da faixa | Pausa ou retoma; clique direito avança; rolagem troca de faixa |
 | Clique no ícone de brilho | Liga ou desliga a luz noturna na hora (a agenda 19:00–07:00 retoma no próximo horário) |
 | Clique na câmera (esquerda) | Começa ou para a gravação de tela; clique direito alterna o áudio: nenhum → microfone → sistema |
