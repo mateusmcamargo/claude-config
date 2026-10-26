@@ -12,6 +12,7 @@ Lista dos atalhos configurados nas máquinas de Mateus. Atualizar este arquivo s
 | `SUPER+E` | Abre o gerenciador de arquivos (Thunar) |
 | `SUPER+F` | Abre o Firefox |
 | `SUPER+R` | Abre o menu de aplicativos (rofi, com pastas; Tab/Shift+Tab troca de pasta) |
+| `SUPER+/` (também `/` do teclado numérico ou `SUPER+AltGr+Q`) | Abre a folha de atalhos (rofi, com filtro); repetir fecha |
 | `SUPER+C` | Fecha a janela em foco |
 | `ALT+F4` | Fecha a janela em foco; sem janela no workspace visível, abre o menu de energia |
 | `SUPER+M` | Encerra a sessão |
@@ -25,9 +26,15 @@ Lista dos atalhos configurados nas máquinas de Mateus. Atualizar este arquivo s
 | `SUPER+setas` | Movem e encaixam a janela em foco, como no Windows (tabela abaixo); não trocam o foco |
 | `SUPER+1..0` | Vai para o workspace 1 a 10 |
 | `SUPER+SHIFT+1..0` | Move a janela para o workspace 1 a 10 |
-| `SUPER+S` / `SUPER+SHIFT+S` | Mostra o workspace especial "magic" / move a janela para ele |
+| `SUPER+S` / `SUPER+ALT+S` | Mostra o workspace especial "magic" / move a janela para ele |
+| `SUPER+SHIFT+S` | Screenshot de uma área (seleção com o mouse) |
+| `Print` / `SUPER+Print` | Screenshot do monitor em foco |
+| `ALT+Print` | Screenshot da janela ativa |
+| `SUPER+SHIFT+R` | Grava a tela (arrastar = área, clicar = monitor inteiro); de novo para |
+| `SUPER+SHIFT+C` | Seletor de cor: clique copia a cor sob o cursor em hex; Esc ou repetir cancela |
 | `SUPER+N` | Mostra as janelas minimizadas |
-| `ALT+TAB` / `ALT+SHIFT+TAB` | Próxima / anterior janela do workspace, trazida para a frente |
+| `ALT+TAB` / `ALT+SHIFT+TAB` | Lista de janelas de todos os workspaces (rofi); segurando ALT, TAB desce e SHIFT+TAB sobe; soltar o ALT troca para a janela marcada; Esc cancela |
+| `SUPER+Escape` | Só durante a lista do ALT+TAB: sai do submap "switcher" se ele travar |
 | `SUPER+TAB` / `SUPER+SHIFT+TAB` | Próximo / anterior workspace com janelas |
 | `SUPER+rolagem do mouse` | Troca de workspace |
 | `SUPER+botão esquerdo` / `SUPER+botão direito` | Move / redimensiona a janela |
@@ -64,6 +71,9 @@ Logo após minimizar com `SUPER+baixo`, `SUPER+cima` restaura a janela, desde qu
 | Rolagem sobre o ícone de brilho ou volume | Ajusta o valor e mostra o aviso na tela |
 | Clique no ícone de volume | Silencia |
 | Clique no nome da faixa | Pausa ou retoma; clique direito avança; rolagem troca de faixa |
+| Clique no ícone de brilho | Liga ou desliga a luz noturna na hora (a agenda 19:00–07:00 retoma no próximo horário) |
+| Clique na câmera (esquerda) | Começa ou para a gravação de tela; clique direito alterna o áudio: nenhum → microfone → sistema |
+| Clique no ícone da bateria | Alterna o perfil de energia: power-saver → balanced → performance |
 | Clique no sino | Liga ou desliga o modo não perturbe; clique direito reabre a última; clique do meio limpa |
 
 ## VSCodium
