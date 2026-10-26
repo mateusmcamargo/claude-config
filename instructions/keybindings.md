@@ -63,6 +63,7 @@ Logo após minimizar com `SUPER+baixo`, `SUPER+cima` restaura a janela, desde qu
 | Clique duplo na barra | Maximiza ou restaura |
 | Clique do meio na barra | Fecha a janela |
 | Arrastar a barra até a borda da tela | Encaixa em metade, quarto ou tela inteira |
+| Botão ☰ (direita da barra) | Menu da janela: sempre no topo, fixar em todos os workspaces, mover para workspace, encaixar, transparência, screenshot/gravar a janela, informações (clique copia), forçar fechamento |
 
 ## Waybar
 
