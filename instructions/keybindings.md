@@ -11,9 +11,10 @@ Lista dos atalhos configurados nas máquinas de Mateus. Atualizar este arquivo s
 | `SUPER+Q` | Abre o terminal (kitty) |
 | `SUPER+E` | Abre o gerenciador de arquivos (Thunar) |
 | `SUPER+F` | Abre o Firefox |
+| `SUPER+SHIFT+F` | Abre uma nova janela anônima do Firefox |
 | `SUPER+R` | Abre o menu de aplicativos (rofi, com pastas; Tab/Shift+Tab troca de pasta) |
 | `SUPER+/` (também `/` do teclado numérico ou `SUPER+AltGr+Q`) | Abre a folha de atalhos (rofi, com filtro); repetir fecha |
-| `SUPER+C` | Fecha a janela em foco |
+| `SUPER+C` | Igual ao `ALT+F4`: fecha a janela em foco; sem janela no workspace visível, abre o menu de energia |
 | `ALT+F4` | Fecha a janela em foco; sem janela no workspace visível, abre o menu de energia |
 | `SUPER+M` | Encerra a sessão |
 | `SUPER+L` | Bloqueia a tela (hyprlock) |
@@ -26,14 +27,14 @@ Lista dos atalhos configurados nas máquinas de Mateus. Atualizar este arquivo s
 | `SUPER+setas` | Movem e encaixam a janela em foco, como no Windows (tabela abaixo); não trocam o foco |
 | `SUPER+1..0` | Vai para o workspace 1 a 10 |
 | `SUPER+SHIFT+1..0` | Move a janela para o workspace 1 a 10 |
-| `SUPER+S` / `SUPER+ALT+S` | Mostra o workspace especial "magic" / move a janela para ele |
+| `SUPER+S` | Abre o Spotify |
 | `SUPER+SHIFT+S` | Screenshot de uma área (seleção com o mouse) |
 | `Print` / `SUPER+Print` | Screenshot do monitor em foco |
 | `ALT+Print` | Screenshot da janela ativa |
 | `SUPER+SHIFT+R` | Grava a tela (arrastar = área, clicar = monitor inteiro); de novo para |
 | `SUPER+SHIFT+C` | Seletor de cor: clique copia a cor sob o cursor em hex; Esc ou repetir cancela |
 | `SUPER+N` | Mostra as janelas minimizadas |
-| `ALT+TAB` / `ALT+SHIFT+TAB` | Lista de janelas de todos os workspaces (rofi); segurando ALT, TAB desce e SHIFT+TAB sobe; soltar o ALT troca para a janela marcada; Esc cancela |
+| `ALT+TAB` / `ALT+SHIFT+TAB` | Como no Windows, só janelas do workspace atual (e as minimizadas dele): toque rápido volta para a janela anterior; segurando ALT aparece a lista, TAB/setas andam, SHIFT+TAB volta, soltar o ALT escolhe, Esc cancela |
 | `SUPER+Escape` | Só durante a lista do ALT+TAB: sai do submap "switcher" se ele travar |
 | `SUPER+TAB` / `SUPER+SHIFT+TAB` | Próximo / anterior workspace com janelas |
 | `SUPER+rolagem do mouse` | Troca de workspace |
@@ -67,17 +68,28 @@ Logo após minimizar com `SUPER+baixo`, `SUPER+cima` restaura a janela, desde qu
 
 ## Waybar
 
+Padrão dos ícones com menu: clique esquerdo abre o menu (rofi abaixo da barra), clique do meio liga/desliga ou alterna a função principal. Menus com um gerenciador terminam em "Open manager".
+
 | Ação | Efeito |
 |---|---|
 | Rolagem sobre o ícone de brilho ou volume | Ajusta o valor e mostra o aviso na tela |
-| Clique no ícone de volume | Silencia; clique direito abre os sliders de volume (pavucontrol, de novo fecha) |
-| Clique no ícone de rede | Menu do Wi-Fi: redes com sinal, conectar (pede senha se preciso), desconectar, ligar/desligar |
-| Clique no ícone de Bluetooth | Abre o blueman (de novo fecha); clique direito liga/desliga o Bluetooth |
+| Clique no ícone de volume | Menu de som: silenciar, escolher saída (alto-falante, fone, HDMI, Bluetooth) e microfone, "Fix audio" quando o som trava, rodapé abre o pavucontrol; de novo fecha |
+| Clique do meio no ícone de volume | Silencia |
+| Clique direito no ícone de volume | Abre os sliders de volume (pavucontrol, de novo fecha) |
+| Clique no ícone de rede | Menu do Wi-Fi: redes com sinal, conectar (pede senha se preciso), desconectar, ligar/desligar, rodapé abre o nmtui |
+| Clique do meio no ícone de rede | Liga ou desliga o Wi-Fi |
+| Clique no ícone do sistema (coração) | Menu do sistema: CPU, RAM, disco, GPU NVIDIA, ventoinhas, apps mais pesados (escolher um oferece fechar ou forçar), rodapé abre o btop; de novo fecha |
+| Clique direito no ícone do sistema | Abre o btop (de novo fecha) |
+| Clique no ícone de Bluetooth | Menu do Bluetooth: dispositivos pareados, conectar/desconectar, rodapé abre o blueman (de novo fecha) |
+| Clique do meio ou direito no ícone de Bluetooth | Liga ou desliga o Bluetooth |
 | Clique no nome da faixa | Pausa ou retoma; clique direito avança; rolagem troca de faixa |
-| Clique no ícone de brilho | Liga ou desliga a luz noturna na hora (a agenda 19:00–07:00 retoma no próximo horário) |
+| Clique no ícone de brilho | Menu de tela: luz noturna, brilho 25/50/75/100%, agenda da luz noturna (de novo fecha) |
+| Clique do meio no ícone de brilho | Liga ou desliga a luz noturna na hora (a agenda 19:00–07:00 retoma no próximo horário) |
 | Clique na câmera (esquerda) | Começa ou para a gravação de tela; clique direito alterna o áudio: nenhum → microfone → sistema |
-| Clique no ícone da bateria | Alterna o perfil de energia: power-saver → balanced → performance |
-| Clique no sino | Liga ou desliga o modo não perturbe; clique direito reabre a última; clique do meio limpa |
+| Clique no ícone da bateria | Menu da bateria: nível e tempo restante, escolher o perfil de energia, consumo, saúde e limite de carga (de novo fecha) |
+| Clique do meio no ícone da bateria | Alterna o perfil de energia: power-saver → balanced → performance |
+| Clique no sino | Menu de notificações: não perturbe, cartões com cor, ícone, título e corpo (o ✕ de cada um apaga só ela; tecla Delete também), "Clear all" no rodapé (de novo fecha) |
+| Clique do meio no sino | Liga ou desliga o modo não perturbe |
 
 ## VSCodium
 
@@ -89,6 +101,7 @@ Esquema igual ao do VS Code no Windows.
 | `ALT+SHIFT+setas para cima/baixo` | Copia a linha para cima/baixo |
 | `CTRL+ALT+setas para cima/baixo` | Adiciona cursor acima/abaixo |
 | `CTRL+Q` | Seletor de painéis da barra lateral; com `CTRL` pressionado, `Q` avança (não fecha o programa) |
+| `CTRL+B` | Mostra ou oculta a barra lateral; ao ocultar, o foco volta para o editor |
 | `CTRL+'` | Mostra ou oculta o terminal integrado |
 | `CTRL+SHIFT+'` | Novo terminal integrado |
 | `CTRL+K CTRL+Z` | Modo zen |
