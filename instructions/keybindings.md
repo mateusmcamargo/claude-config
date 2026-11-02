@@ -82,14 +82,15 @@ Padrão dos ícones com menu: clique esquerdo abre o menu (rofi abaixo da barra)
 | Clique direito no ícone do sistema | Abre o btop (de novo fecha) |
 | Clique no ícone de Bluetooth | Menu do Bluetooth: dispositivos pareados, conectar/desconectar, rodapé abre o blueman (de novo fecha) |
 | Clique do meio ou direito no ícone de Bluetooth | Liga ou desliga o Bluetooth |
-| Clique no nome da faixa | Pausa ou retoma; clique direito avança; rolagem troca de faixa |
-| Clique no ícone de brilho | Menu de tela: luz noturna, brilho 25/50/75/100%, agenda da luz noturna (de novo fecha) |
+| Clique no wayplayer (play/pause, nome da faixa ou cava) | Pausa ou retoma; clique direito ou rolagem para cima avança; rolagem para baixo volta |
+| Clique no ícone de brilho | Menu de tela: luz noturna, temperatura e agenda (sliders), brilho (slider) (de novo fecha) |
 | Clique do meio no ícone de brilho | Liga ou desliga a luz noturna na hora (a agenda 19:00–07:00 retoma no próximo horário) |
 | Clique na câmera (esquerda) | Começa ou para a gravação de tela; clique direito alterna o áudio: nenhum → microfone → sistema |
 | Clique no ícone da bateria | Menu da bateria: nível e tempo restante, escolher o perfil de energia, consumo, saúde e limite de carga (de novo fecha) |
 | Clique do meio no ícone da bateria | Alterna o perfil de energia: power-saver → balanced → performance |
 | Clique no sino | Menu de notificações: não perturbe, cartões com cor, ícone, título e corpo (o ✕ de cada um apaga só ela; tecla Delete também), "Clear all" no rodapé (de novo fecha) |
 | Clique do meio no sino | Liga ou desliga o modo não perturbe |
+| Clique no relógio | Waytile do relógio: relógio grande em ASCII, calendário do mês com o dia de hoje e a data por extenso (de novo fecha) |
 
 ## VSCodium
 
