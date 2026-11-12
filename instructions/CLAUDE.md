@@ -6,6 +6,7 @@ Instruções válidas para todos os projetos. Este arquivo é instalado em `~/.c
 
 - **Comentários em inglês.** Vale para todo código e todo arquivo de configuração criado ou editado (shell, Lua, C/C++, Python, CSS, JSON com comentários, arquivos `.conf`). Ao editar um arquivo com comentários em outro idioma, os comentários tocados passam para o inglês.
 - **Indentação de 4 espaços, sem caracteres de tabulação.** Vale para todas as linguagens e formatos (CSS, JSON, Markdown, Lua, shell, Python, C/C++, YAML). Exceção apenas quando o formato exige tabulação, como o `Makefile`.
+- **Sem quebra de linha ao final do arquivo.** A última linha de todo arquivo de código, configuração ou documentação termina sem o caractere de nova linha. Ao editar um arquivo que termina com quebra de linha, removê-la.
 - O VSCodium e o Neovim desta pessoa já estão configurados com 4 espaços (`editor.tabSize: 4` e `~/.config/nvim/init.lua`). Código gerado deve seguir o mesmo padrão para não divergir do que o editor produz.
 
 ## Atalhos

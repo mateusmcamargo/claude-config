@@ -6,7 +6,7 @@ A pasta `instructions/` contém as instruções que o Claude Code lê no início
 
 | Arquivo | Destino | Conteúdo |
 |---|---|---|
-| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Preferências de código: comentários em inglês e indentação de 4 espaços |
+| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Preferências de código: comentários em inglês, indentação de 4 espaços e ausência de quebra de linha ao final do arquivo |
 | `keybindings.md` | `~/.claude/keybindings.md` | Atalhos de teclado e mouse em uso (Hyprland, barra de título, Waybar, VSCodium, Neovim e outros programas) |
 
 O `CLAUDE.md` importa o `keybindings.md` com a referência `@keybindings.md`, resolvida a partir do diretório do próprio arquivo. Por esse motivo, os dois arquivos precisam ficar na mesma pasta.
